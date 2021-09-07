@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <h2>Portfolio</h2>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Symbol</th>
+                            <th>Name</th>
+                            <th>Shares</th>
+                            <th>Price</th>
+                            <th>Total Cost</th>
+                            <th>Trade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- TODO: Loop through the database to display all transactions and the balance -->
+                        {% for row in rows %}
+                           <tr>
+                               <td>{{row.symbol}}
+                               <td>{{row.name}}</td>
+                               <td>{{row.shares}}</td>
+                               <td>{{(row.price)|usd}}</td>
+                               <td>{{(row.total_cost)|usd}}</td>
+                               <td><a href="{{url_for('buy')}}" class="btn btn-outline-dark text-center">Buy More</a> <a href="{{url_for('sell')}}" class="btn btn-outline-dark text-center">Sell</a></td>
+                         {% endfor %}
+
+                           </tr>
+
+
+                           <tr>
+                               <th>Cash</th>
+                               <td></td>
+                               <td></td>
+                               <td></td>
+                               <td></td>
+                               <td>{{cash|usd}}</td>
+
+                           </tr>
+                           <tr>
+                               <th>Grand Total</th>
+                               <td></td>
+                               <td></td>
+                               <td></td>
+                               <td></td>
+                               <td>{{grand_total|usd}}</td>
+
+                           </tr>
+
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
+{% endblock %}

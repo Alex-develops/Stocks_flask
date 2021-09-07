@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <h2>History</h2>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Symbol</th>
+                            <th>Shares</th>
+                            <th>Price</th>
+                            <th>Transaction Type</th>
+                            <th>Date and Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- TODO: Loop through the database to display all transactions and the balance -->
+                        {% for row in rows %}
+                           <tr>
+                               <td>{{row.symbol}}
+                               <td>{{row.shares}}</td>
+                               <td>{{(row.price)|usd}}</td>
+                               <td>{{row.transaction_type}}</td>
+                               <td>{{row.lastmodified}}</td>
+                         {% endfor %}
+
+                           </tr>
+
+
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
+{% endblock %}
